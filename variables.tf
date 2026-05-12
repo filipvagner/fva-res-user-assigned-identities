@@ -21,3 +21,8 @@ variable "role_assignments" {
   }))
   default = {}
 }
+
+variable "key_vault_id" {
+  type = string
+  description = "Key Vault id to store app registration's secret"
+}
