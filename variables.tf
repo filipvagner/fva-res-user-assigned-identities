@@ -23,7 +23,7 @@ variable "role_assignments" {
 }
 
 variable "key_vault_id" {
-  type = string
+  type        = string
   description = "Key Vault id to store app registration's secret"
 }
 
@@ -32,6 +32,6 @@ variable "github_federated_credentials" {
     repository_name = string
     branch_name     = string
   }))
-  default = {}
+  default     = {}
   description = "Federated identity credential for GitHub Actions"
 }

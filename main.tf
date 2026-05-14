@@ -32,7 +32,7 @@ resource "azurerm_key_vault_secret" "principal_id" {
 
 resource "azurerm_federated_identity_credential" "github" {
   for_each = var.github_federated_credentials
-  
+
   name                      = "${each.value.repository_name}-branch-${each.value.branch_name}"
   audience                  = ["api://AzureADTokenExchange"]
   issuer                    = "https://token.actions.githubusercontent.com"
