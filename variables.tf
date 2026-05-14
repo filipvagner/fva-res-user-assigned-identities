@@ -26,3 +26,12 @@ variable "key_vault_id" {
   type = string
   description = "Key Vault id to store app registration's secret"
 }
+
+variable "github_federated_credentials" {
+  type = map(object({
+    repository_name = string
+    branch_name     = string
+  }))
+  default = {}
+  description = "Federated identity credential for GitHub Actions"
+}

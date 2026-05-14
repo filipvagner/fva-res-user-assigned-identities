@@ -29,3 +29,13 @@ resource "azurerm_key_vault_secret" "principal_id" {
   content_type = "Managed by Terraform."
   key_vault_id = var.key_vault_id
 }
+
+resource "azurerm_federated_identity_credential" "github" {
+  for_each = var.github_federated_credentials
+  
+  name                      = "${each.value.repository_name}-branch-${each.value.branch_name}"
+  audience                  = ["api://AzureADTokenExchange"]
+  issuer                    = "https://token.actions.githubusercontent.com"
+  user_assigned_identity_id = azurerm_user_assigned_identity.this.id
+  subject                   = "repo:Azure-At-Night/${each.value.repository_name}:ref:refs/heads/${each.value.branch_name}"
+}
