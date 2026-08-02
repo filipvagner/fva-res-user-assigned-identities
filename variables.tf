@@ -35,3 +35,9 @@ variable "github_federated_credentials" {
   default     = {}
   description = "Federated identity credential for GitHub Actions"
 }
+
+variable "tags" {
+  type        = map(string)
+  default     = null
+  description = "(Optional) Tags of the resource."
+}
